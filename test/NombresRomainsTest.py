@@ -45,6 +45,16 @@ class MyTestCase(unittest.TestCase):
         # ALORS on obtient 'IX'
         self.assertEqual('IX', result)
 
+    def test_quatorze(self):
+        # ETANT DONNE le chiffre 14
+        nombre = 14
+
+        # QUAND on le convertit en nombres romains
+        result = ConvertisseurNombresRomains.convertir(nombre)
+
+        # ALORS on obtient 'XIV'
+        self.assertEqual('XIV', result)
+
     def test_quinze(self):
         # ETANT DONNE le chiffre 15
         nombre = 15
