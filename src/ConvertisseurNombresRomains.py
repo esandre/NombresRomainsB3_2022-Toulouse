@@ -1,11 +1,21 @@
 def convertir(nombre):
     if nombre <= 3:
-        return 'I'*nombre
+        return cas_symbole_plus_unite('', 0, nombre)
 
     if nombre == 4:
         return 'IV'
 
     if nombre <= 8:
-        return 'V' + 'I'*(nombre-5)
+        return cas_symbole_plus_unite('V', 5, nombre)
+
+    if nombre == 9:
+        return 'IX'
+
+    if nombre <= 13:
+        return cas_symbole_plus_unite('X', 10, nombre)
 
     raise Exception('Nombre non supporté')
+
+
+def cas_symbole_plus_unite(symbole, valeur_symbole, nombre_arabe):
+    return symbole + 'I' * (nombre_arabe - valeur_symbole)
