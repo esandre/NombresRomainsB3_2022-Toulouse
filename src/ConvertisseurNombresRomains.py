@@ -14,6 +14,9 @@ def convertir(nombre):
     if nombre <= 13:
         return cas_symbole_plus_unite('X', 10, nombre)
 
+    if nombre == 14:
+        return 'XIV'
+
     if nombre == 15:
         return 'XV'
 
