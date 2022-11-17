@@ -1,7 +1,5 @@
 import unittest
-
 import parameterized as parameterized
-
 import ConvertisseurNombresRomains
 
 
@@ -17,7 +15,17 @@ class MyTestCase(unittest.TestCase):
         attendu = 'I'*n
         self.assertEqual(attendu, result)
 
-    def test_four(self):
+    @parameterized.parameterized.expand([[5], [6], [7], [8]])
+    def test_cinq_plus_unité(self, n):
+        # ETANT DONNE un chiffre <n> entre 5 et 8
+        # QUAND on le convertit en nombres romains
+        result = ConvertisseurNombresRomains.convertir(n)
+
+        # ALORS on obtient 'V' plus <n-5> fois 'I'
+        attendu = 'V' + 'I' * (n - 5)
+        self.assertEqual(attendu, result)
+
+    def test_quatre(self):
         # ETANT DONNE le chiffre 4
         nombre = 4
 
@@ -27,45 +35,25 @@ class MyTestCase(unittest.TestCase):
         # ALORS on obtient 'IV'
         self.assertEqual('IV', result)
 
-    def test_five(self):
-        # ETANT DONNE le chiffre 5
-        nombre = 5
+    def test_neuf(self):
+        # ETANT DONNE le chiffre 9
+        nombre = 9
 
         # QUAND on le convertit en nombres romains
         result = ConvertisseurNombresRomains.convertir(nombre)
 
-        # ALORS on obtient 'V'
-        self.assertEqual('V', result)
+        # ALORS on obtient 'IX'
+        self.assertEqual('IX', result)
 
-    def test_six(self):
-        # ETANT DONNE le chiffre 6
-        nombre = 6
-
+    @parameterized.parameterized.expand([[10], [11], [12], [13]])
+    def test_dix_plus_unité(self, n):
+        # ETANT DONNE un chiffre <n> entre 10 et 13
         # QUAND on le convertit en nombres romains
-        result = ConvertisseurNombresRomains.convertir(nombre)
+        result = ConvertisseurNombresRomains.convertir(n)
 
-        # ALORS on obtient 'VI'
-        self.assertEqual('VI', result)
-
-    def test_sept(self):
-        # ETANT DONNE le chiffre 7
-        nombre = 7
-
-        # QUAND on le convertit en nombres romains
-        result = ConvertisseurNombresRomains.convertir(nombre)
-
-        # ALORS on obtient 'VII'
-        self.assertEqual('VII', result)
-
-    def test_huit(self):
-        # ETANT DONNE le chiffre 8
-        nombre = 8
-
-        # QUAND on le convertit en nombres romains
-        result = ConvertisseurNombresRomains.convertir(nombre)
-
-        # ALORS on obtient 'VIII'
-        self.assertEqual('VIII', result)
+        # ALORS on obtient 'X' plus <n-10> fois 'I'
+        attendu = 'X' + 'I' * (n - 10)
+        self.assertEqual(attendu, result)
 
 
 if __name__ == '__main__':
